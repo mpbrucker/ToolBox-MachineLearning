@@ -30,8 +30,17 @@ def train_model():
     # variability.
     # For consistency with the previous example use
     # model = LogisticRegression(C=10**-10) for your learner
-
-    # TODO: your code here
+    for idx, size in enumerate(train_percentages):
+        avg_val = numpy.zeros(10)
+        for count in range(10):
+            X_train, X_test, y_train, y_test = train_test_split(data.data, data.target,
+                                                                train_size=size/100)
+            model = LogisticRegression(C=10**-3)
+            model.fit(X_train, y_train)
+            avg_val[count] = model.score(X_test, y_test)
+        acc = numpy.mean(avg_val)
+        test_accuracies[idx] = acc
+        print("Test accuracy %f" % acc)
 
     fig = plt.figure()
     plt.plot(train_percentages, test_accuracies)
@@ -42,5 +51,5 @@ def train_model():
 
 if __name__ == "__main__":
     # Feel free to comment/uncomment as needed
-    display_digits()
-    # train_model()
+    # display_digits()
+    train_model()

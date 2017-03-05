@@ -1,0 +1,4 @@
+1. As the percentage of data used for training increases, the accuracy increases, in a fairly linear manner.
+2. The end of the curve with the highest percentage of data used for training seems to have the most noise. This is likely because there is so little data used for testing that small changes have a large impact on the accuracy of the model. Overall, there was a fair amount of noise throughout the curve.
+3. I was able to get a fairly smooth curve with about 1000 trials. 100 trials worked okay, but there was still some noticeable noise.
+4. Giving higher values of C (e.g. 10 ^-1) seemed to give a high accuracy, and a high increase in accuracy as the percentage of training data increased. Low values for C (e.g. 10 ^ -20) made the model extremely noisy and much more inaccurate.
